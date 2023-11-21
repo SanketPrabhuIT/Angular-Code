@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.cs
+s">
+<title>Shopper's stop</title>
+</head>
+<body>
+<div class="container">
+<div id="godprod">
+<div id="product1" class="card" *ngFor = "let gadget of gadgets">
+<img src="{{ gadget.src }}" class="card-img-top" alt="apple"/>
+<div class="card-body">
+<h5 class="card-title">{{ gadget.name}}</h5>
+<p class="card-text">{{gadget.description}}</p>
+<button class="increment-btn btn btn-outline-secondary"
+(click)="operation('+', gadget)">+</button>
+<span class="qty" id="qty"> {{ gadget.qty }} </span>
+<button class="btn btn-outline-secondary decrement-btn"
+(click)="operation('-
+', gadget)">-</button>&nbsp;&nbsp;
+<a href="#" class="btn btn-primary" (click)="toCart(gadget)">Add to
+cart</a>
+</div>
+</div>
+<br><br>
+<div class="cart">
+<h2 class="cart-heading">&nbsp;&nbsp;Your Cart</h2>
+<hr class="cart-hr" />
+<ul class="items-list">
+<li *ngFor="let item of cart" class="cart-item">
+<b>{{ item.name }}</b> - Qty:
+<b>{{ item.qty + " " + item.unit }}</b>
+<p>{{ item.description }}</p>
+<h6>Item Total: ₹ {{ item.qty * item.price }}</h6>
+<button type="button" class="btn btn-outline-danger remove-btn"
+(click)="removeFromCart(item)">Remove</button>
+<br/>
+</li>
+</ul>
+<h4 class="cart-total">&nbsp;&nbsp;Total:₹ {{ total }}</h4>
+</div>
+</div>
+</div>
+</body>
+</html>
